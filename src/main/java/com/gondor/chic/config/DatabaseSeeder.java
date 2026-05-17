@@ -24,9 +24,9 @@ public class DatabaseSeeder {
             Client gandalf = Client.builder().prenom("Gandalf").nom("Le Gris").pseudo("Mithrandir").motDePasse("YouShallNotPass").build();
             clientRepository.saveAll(List.of(frodon, sam, gandalf));
 
-            Product chaudron = Product.builder().libelle("Chaudron magique").prix(250.0).stock(678).isProduitDuJour(true).image("chaudron.png").build();
-            Product cape = Product.builder().libelle("Cape magique").prix(180.0).stock(50).isProduitDuJour(false).image("cape.png").build();
-            Product anneau = Product.builder().libelle("Anneau elfique").prix(999.0).stock(3).isProduitDuJour(false).image("anneau.png").build();
+            Product chaudron = Product.builder().libelle("Chaudron magique").prix(25000.0).stock(678).isProduitDuJour(true).image("chaudron.png").build();
+            Product cape = Product.builder().libelle("Cape magique").prix(30000.0).stock(50).isProduitDuJour(false).image("cape.png").build();
+            Product anneau = Product.builder().libelle("Anneau elfique").prix(20000.0).stock(3).isProduitDuJour(false).image("anneau.png").build();
             productRepository.saveAll(List.of(chaudron, cape, anneau));
 
             System.out.println("Base de données initialisée avec succès !");
