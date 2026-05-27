@@ -1,7 +1,7 @@
 package com.gondor.chic.controller;
 
 import com.gondor.chic.entity.Product;
-import com.gondor.chic.repository.ProductRepository;
+import com.gondor.chic.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,15 +13,15 @@ import java.util.Optional;
 @RequestMapping("/api/products")
 public class ProductController {
 
-    private final ProductRepository productRepository;
+    private final ProductService productService;
 
-    public ProductController(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public ProductController(ProductService productService) {
+        this.productService = productService;
     }
 
     @GetMapping("/of-the-day")
     public ResponseEntity<?> getProductOfTheDay() {
-        Optional<Product> product = productRepository.findByIsProduitDuJourTrue();
+        Optional<Product> product = productService.obtenirProduitDuJour();
 
         if (product.isPresent()) {
             return ResponseEntity.ok(product.get());

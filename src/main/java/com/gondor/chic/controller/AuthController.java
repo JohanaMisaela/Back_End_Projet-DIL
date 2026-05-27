@@ -1,7 +1,7 @@
 package com.gondor.chic.controller;
 
 import com.gondor.chic.entity.Client;
-import com.gondor.chic.repository.ClientRepository;
+import com.gondor.chic.service.ClientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +13,10 @@ import java.util.Optional;
 @RequestMapping("/api/auth")
 public class AuthController {
 
-    private final ClientRepository clientRepository;
+    private final ClientService clientService;
 
-    public AuthController(ClientRepository clientRepository) {
-        this.clientRepository = clientRepository;
+    public AuthController(ClientService clientService) {
+        this.clientService = clientService;
     }
 
     @PostMapping("/login")
@@ -24,7 +24,7 @@ public class AuthController {
         String pseudo = credentials.get("pseudo");
         String motDePasse = credentials.get("motDePasse");
 
-        Optional<Client> client = clientRepository.findByPseudoAndMotDePasse(pseudo, motDePasse);
+        Optional<Client> client = clientService.authentifier(pseudo, motDePasse);
 
         if (client.isPresent()) {
             return ResponseEntity.ok(client.get());
