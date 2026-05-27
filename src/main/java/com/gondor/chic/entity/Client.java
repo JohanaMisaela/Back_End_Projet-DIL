@@ -1,5 +1,6 @@
 package com.gondor.chic.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,9 +25,16 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String prenom;
+    
+    @Column(nullable = false)
     private String nom;
+    
+    @Column(unique = true, nullable = false)
     private String pseudo;
+    
+    @Column(nullable = false)
     private String motDePasse;
 
 }
